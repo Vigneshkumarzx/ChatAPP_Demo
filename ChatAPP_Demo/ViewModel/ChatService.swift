@@ -21,6 +21,19 @@ class ChatService {
         }
     }
     
+    func getLoggedInUser() -> User? {
+           let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+           fetchRequest.predicate = NSPredicate(format: "name == %@", UserDefaults.standard.string(forKey: "loggedInUser") ?? "")
+           
+           do {
+               let users = try context.fetch(fetchRequest)
+               return users.first
+           } catch {
+               print("Error fetching logged-in user: \(error)")
+               return nil
+           }
+       }
+    
     private func receiveMockResponse(from user: User) {
         let message = Message(context: context)
         message.id = UUID()

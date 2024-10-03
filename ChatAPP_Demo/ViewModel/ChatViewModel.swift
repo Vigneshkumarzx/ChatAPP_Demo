@@ -15,16 +15,9 @@ class ChatViewModel: ObservableObject {
     @Published var typedMessage: String = ""
     let context = PersistenceController.shared.context
     var currentUser: User
-    @FetchRequest(
-        entity: User.entity(),
-        sortDescriptors: [], // Add your sort descriptors if needed
-        predicate: NSPredicate(format: "name == %@", UserDefaults.standard.string(forKey: "loggedInUser") ?? "")
-    )
-    var loggedInUser: FetchedResults<User>
     private let chatService = ChatService()
     
     init() {
-        // Initialize with a mock current user
         self.currentUser = User(context: PersistenceController.shared.context)
         currentUser.id = UUID()
         currentUser.name = "Current User"
@@ -80,10 +73,10 @@ class ChatViewModel: ObservableObject {
         }
     }
     
+    // Logout user
     func logoutUser() {
         deleteLoggedInUser()
         deleteAllConversations()
-       
         print("User logged out, all conversations deleted")
     }
     
@@ -97,10 +90,11 @@ class ChatViewModel: ObservableObject {
         } catch {
             print("Error deleting conversations: \(error)")
         }
+        loadConversations() // Refresh conversations after deletion
     }
     
     func deleteLoggedInUser() {
-        if let user = loggedInUser.first {
+        if let user = chatService.getLoggedInUser() { // Use your service to fetch the logged-in user
             context.delete(user)
             do {
                 try context.save()  // Save the context after user deletion
@@ -109,6 +103,14 @@ class ChatViewModel: ObservableObject {
                 print("Error deleting user: \(error)")
             }
         }
+    }
+    
+    func formatDate(_ date: Date?) -> String {
+        guard let date = date else { return "" }
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none // No date style
+        formatter.timeStyle = .short // Only short time style
+        return formatter.string(from: date)
     }
 }
 

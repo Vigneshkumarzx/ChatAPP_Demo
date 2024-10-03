@@ -49,7 +49,7 @@ struct ChatView: View {
                                             .frame(width: 20, height: 20)
                                     }
                                     
-                                    Text(formatDate(message.timeStamp))
+                                    Text(viewModel.formatDate(message.timeStamp))
                                         .font(.caption)
                                         .foregroundColor(.gray)
                                 }
@@ -69,7 +69,7 @@ struct ChatView: View {
                                             .foregroundColor(.black)
                                             .frame(maxWidth: 300, alignment: .leading)
                                     }
-                                    Text(formatDate(message.timeStamp))
+                                    Text(viewModel.formatDate(message.timeStamp))
                                         .font(.caption)
                                         .foregroundColor(.gray)
                                 }
