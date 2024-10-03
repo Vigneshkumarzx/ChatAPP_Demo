@@ -15,13 +15,14 @@ struct ConversationListView: View {
     var conversations: FetchedResults<Conversation>
     @Environment(\.presentationMode) private var presentationMode
     let context = PersistenceController.shared.context
+    @StateObject var viewModel: ChatViewModel = .init()
     @FetchRequest(
         entity: User.entity(),
         sortDescriptors: [], // Add your sort descriptors if needed
         predicate: NSPredicate(format: "name == %@", UserDefaults.standard.string(forKey: "loggedInUser") ?? "")
     )
     var loggedInUser: FetchedResults<User>
-    
+   
     @State private var showLogoutAlert = false
     
     var body: some View {
@@ -39,7 +40,7 @@ struct ConversationListView: View {
                                 Text(conversation.lastMessage ?? "No message")
                                     .font(.headline)
                                 
-                                if let participants = conversation.participants as? Set<User> {
+                                if let participants = conversation.participants {
                                     let participantNames = participants.map { $0.name ?? "Unknown" }
                                     let participantText = participantNames.joined(separator: ", ")
                                     Text(participantText)
@@ -92,6 +93,7 @@ struct ConversationListView: View {
             print("Error deleting conversations: \(error)")
         }
     }
+    
     private func deleteLoggedInUser() {
         if let user = loggedInUser.first {
             context.delete(user)
@@ -105,31 +107,3 @@ struct ConversationListView: View {
     }
 }
 
-func createMockConversation() -> Conversation {
-    let viewContext = PersistenceController.shared.context
-    
-    let user1 = User(context: viewContext)
-    user1.id = UUID()
-    user1.name = "User 1"
-    user1.avatar = "avatar1"
-    
-    let user2 = User(context: viewContext)
-    user2.id = UUID()
-    user2.name = "User 2"
-    user2.avatar = "avatar2"
-    
-    let conversation = Conversation(context: viewContext)
-    conversation.id = UUID()
-    conversation.lastMessage = "Hello!"
-    conversation.participants = [user1, user2]
-    
-    return conversation
-}
-
-func formatDate(_ date: Date?) -> String {
-    guard let date = date else { return "" }
-    let formatter = DateFormatter()
-    formatter.dateStyle = .none // No date style
-    formatter.timeStyle = .short // Only short time style
-    return formatter.string(from: date)
-}

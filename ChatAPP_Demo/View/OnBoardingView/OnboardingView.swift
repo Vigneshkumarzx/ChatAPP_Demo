@@ -9,7 +9,8 @@ import SwiftUI
 
 struct OnboardingView: View {
     @State private var selection = 0
-    
+    @Environment(\.managedObjectContext) private var viewContext
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -40,19 +41,9 @@ struct OnboardingView: View {
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
                 
-                // Page Control
-                /*   HStack {
-                 ForEach(0..<onboardingPages.count, id: \.self) { index in
-                 Circle()
-                 .fill(selection == index ? Color.blue : Color.gray.opacity(0.5))
-                 .frame(width: 10, height: 10)
-                 }
-                 }
-                 .padding(.bottom, 20) */
-                
                 // "Get Started" Button
                 if selection == onboardingPages.count - 1 {
-                    NavigationLink(destination: LoginView()) {
+                    NavigationLink(destination: LoginView(context: viewContext)) {
                         Text("Get Started")
                             .font(.headline)
                             .foregroundColor(.white)

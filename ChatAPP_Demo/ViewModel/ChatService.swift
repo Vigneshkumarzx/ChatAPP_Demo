@@ -10,7 +10,7 @@ import CoreData
 
 class ChatService {
     private let context = PersistenceController.shared.context
-  
+    
     func fetchConversations() -> [Conversation] {
         let request: NSFetchRequest<Conversation> = Conversation.fetchRequest()
         do {
@@ -20,45 +20,28 @@ class ChatService {
             return []
         }
     }
-
-    func sendMessage(to user: User, content: String) {
-        let message = Message(context: context)
-        message.id = UUID()
-        message.content = content
-        message.timeStamp = Date()
-        message.senderId = user.id
-        message.isRead = false
-        saveMessage(message)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.receiveMockResponse(from: user)
-        }
-    }
-
+    
     private func receiveMockResponse(from user: User) {
         let message = Message(context: context)
         message.id = UUID()
-        message.content = "Reply from \(user.name)"
+        message.content = "Reply from \(user.name ?? "username")"
         message.timeStamp = Date()
         message.senderId = user.id
         message.isRead = false
-        saveMessage(message)
-    }
-
-    private func saveMessage(_ message: Message) {
+        
         do {
             try context.save()
         } catch {
-            print("Error saving message: \(error)")
+            print("Failed to send auto reply: \(error)")
         }
     }
-
+    
     func markMessagesAsRead(for conversation: Conversation) {
         let unreadMessages = fetchUnreadMessages(for: conversation)
         unreadMessages.forEach { $0.isRead = true }
         saveContext()
     }
-
+    
     private func fetchUnreadMessages(for conversation: Conversation) -> [Message] {
         let request: NSFetchRequest<Message> = Message.fetchRequest()
         request.predicate = NSPredicate(format: "isRead == NO")
@@ -69,7 +52,7 @@ class ChatService {
             return []
         }
     }
-
+    
     private func saveContext() {
         do {
             try context.save()

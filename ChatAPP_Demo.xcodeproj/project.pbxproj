@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42833B9C2CAF0682008C256B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42833B9B2CAF0682008C256B /* LoginViewModel.swift */; };
 		42C68BA02CAD7040000657E9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C68B9F2CAD7040000657E9 /* LoginView.swift */; };
 		42C68BA22CAD8042000657E9 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C68BA12CAD8042000657E9 /* ChatView.swift */; };
 		42C68BAA2CAD8C5B000657E9 /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C68BA92CAD8C5B000657E9 /* OnBoardingModel.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42833B9B2CAF0682008C256B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		42C68B9F2CAD7040000657E9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		42C68BA12CAD8042000657E9 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		42C68BA92CAD8C5B000657E9 /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
@@ -103,6 +105,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42833B992CAEFACD008C256B /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				42833B9D2CAF0794008C256B /* View */,
+				42833B9A2CAF0672008C256B /* ViewModel */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		42833B9A2CAF0672008C256B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				42833B9B2CAF0682008C256B /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		42833B9D2CAF0794008C256B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42C68B9F2CAD7040000657E9 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		42C68BA32CAD807D000657E9 /* CoreDataModelExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,9 +192,9 @@
 			isa = PBXGroup;
 			children = (
 				42C6D8782CAC2BFA00EA3A37 /* ChatAPP_DemoApp.swift */,
-				42C6D8AC2CAC2F9300EA3A37 /* ViewModel */,
-				42C68BA82CAD8C4D000657E9 /* Model */,
 				42C6D8AB2CAC2F8A00EA3A37 /* View */,
+				42C68BA82CAD8C4D000657E9 /* Model */,
+				42C6D8AC2CAC2F9300EA3A37 /* ViewModel */,
 				42C6D87C2CAC2BFC00EA3A37 /* Assets.xcassets */,
 				42C6D8A72CAC2ED200EA3A37 /* Persistance */,
 				42C6D87E2CAC2BFC00EA3A37 /* Preview Content */,
@@ -212,11 +239,11 @@
 		42C6D8AB2CAC2F8A00EA3A37 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				42C68BAE2CADB395000657E9 /* Helper */,
+				42833B992CAEFACD008C256B /* LoginView */,
 				42C68BAB2CAD8C92000657E9 /* OnBoardingView */,
 				42C6D8AF2CAC300B00EA3A37 /* ChatView */,
+				42C68BAE2CADB395000657E9 /* Helper */,
 				42C6D87A2CAC2BFA00EA3A37 /* ContentView.swift */,
-				42C68B9F2CAD7040000657E9 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -386,6 +413,7 @@
 				42C6D8BC2CACF2B500EA3A37 /* Message+CoreDataClass.swift in Sources */,
 				42C6D8BD2CACF2B500EA3A37 /* Message+CoreDataProperties.swift in Sources */,
 				42C6D8BE2CACF2B500EA3A37 /* Conversation+CoreDataClass.swift in Sources */,
+				42833B9C2CAF0682008C256B /* LoginViewModel.swift in Sources */,
 				42C6D8BF2CACF2B500EA3A37 /* Conversation+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
