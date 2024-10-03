@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		42C68BA02CAD7040000657E9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C68B9F2CAD7040000657E9 /* LoginView.swift */; };
 		42C68BA22CAD8042000657E9 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C68BA12CAD8042000657E9 /* ChatView.swift */; };
-		42C68BA62CAD80FA000657E9 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C68BA52CAD80FA000657E9 /* CreateAccountView.swift */; };
 		42C68BAA2CAD8C5B000657E9 /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C68BA92CAD8C5B000657E9 /* OnBoardingModel.swift */; };
 		42C68BAD2CAD8CA3000657E9 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C68BAC2CAD8CA3000657E9 /* OnboardingView.swift */; };
 		42C68BB02CADB3A4000657E9 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C68BAF2CADB3A4000657E9 /* ToastView.swift */; };
@@ -53,7 +52,6 @@
 /* Begin PBXFileReference section */
 		42C68B9F2CAD7040000657E9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		42C68BA12CAD8042000657E9 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		42C68BA52CAD80FA000657E9 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		42C68BA92CAD8C5B000657E9 /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
 		42C68BAC2CAD8CA3000657E9 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		42C68BAF2CADB3A4000657E9 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -116,14 +114,6 @@
 				42C6D8B92CACF2B400EA3A37 /* Conversation+CoreDataProperties.swift */,
 			);
 			path = CoreDataModelExtensions;
-			sourceTree = "<group>";
-		};
-		42C68BA42CAD80EA000657E9 /* CreateAccount */ = {
-			isa = PBXGroup;
-			children = (
-				42C68BA52CAD80FA000657E9 /* CreateAccountView.swift */,
-			);
-			path = CreateAccount;
 			sourceTree = "<group>";
 		};
 		42C68BA82CAD8C4D000657E9 /* Model */ = {
@@ -224,7 +214,6 @@
 			children = (
 				42C68BAE2CADB395000657E9 /* Helper */,
 				42C68BAB2CAD8C92000657E9 /* OnBoardingView */,
-				42C68BA42CAD80EA000657E9 /* CreateAccount */,
 				42C6D8AF2CAC300B00EA3A37 /* ChatView */,
 				42C6D87A2CAC2BFA00EA3A37 /* ContentView.swift */,
 				42C68B9F2CAD7040000657E9 /* LoginView.swift */,
@@ -397,7 +386,6 @@
 				42C6D8BC2CACF2B500EA3A37 /* Message+CoreDataClass.swift in Sources */,
 				42C6D8BD2CACF2B500EA3A37 /* Message+CoreDataProperties.swift in Sources */,
 				42C6D8BE2CACF2B500EA3A37 /* Conversation+CoreDataClass.swift in Sources */,
-				42C68BA62CAD80FA000657E9 /* CreateAccountView.swift in Sources */,
 				42C6D8BF2CACF2B500EA3A37 /* Conversation+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
